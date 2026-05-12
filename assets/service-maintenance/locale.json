@@ -1,0 +1,38 @@
+{
+  "maintenanceWindow": {
+    "start": "2026-05-06T17:00:00Z",
+    "end": "2026-05-06T18:00:00Z"
+  },
+  "locales": {
+    "ko": {
+      "htmlLang": "ko",
+      "intlLocale": "ko-KR",
+      "timeZone": "Asia/Seoul",
+      "documentTitle": "서비스 점검 안내",
+      "title": "서비스 점검 중입니다.",
+      "description": "안정적인 서비스 제공을 위해 현재 시스템 점검을 진행하고 있습니다. 점검 완료 후 다시 이용해 주세요.",
+      "notice": "점검 상황에 따라 종료 시간이 변경될 수 있습니다.",
+      "refreshLabel": "새로고침"
+    },
+    "en": {
+      "htmlLang": "en",
+      "intlLocale": "en-US",
+      "timeZone": "client",
+      "documentTitle": "Service Maintenance Notice",
+      "title": "Service Maintenance in Progress",
+      "description": "We are currently performing system maintenance to provide a stable service. Please try again after maintenance is complete.",
+      "notice": "The end time may change depending on maintenance progress.",
+      "refreshLabel": "Refresh"
+    },
+    "jp": {
+      "htmlLang": "ja",
+      "intlLocale": "ja-JP",
+      "timeZone": "Asia/Tokyo",
+      "documentTitle": "サービスメンテナンスのお知らせ",
+      "title": "サービスメンテナンス中です。",
+      "description": "安定したサービス提供のため、現在システムメンテナンスを実施しています。メンテナンス完了後に再度ご利用ください。",
+      "notice": "メンテナンス状況により終了時刻が変更される場合があります。",
+      "refreshLabel": "更新"
+    }
+  }
+}

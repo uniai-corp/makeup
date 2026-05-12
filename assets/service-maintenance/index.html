@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" data-locale="ko" data-default-locale="ko" data-locale-src="./locale.json">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서비스 점검 안내</title>
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="data:image/png;base64,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">
+  <link rel="stylesheet" href="./css/maintenance.css">
+  <script src="./js/locale.js" defer></script>
+</head>
+
+<body>
+  <main class="maintenance-page" aria-labelledby="maintenance-title">
+    <section class="maintenance" aria-describedby="maintenance-description maintenance-period maintenance-notice">
+      <div class="maintenance__icon" data-pulse-motion="in-out" aria-hidden="true">
+        <svg class="maintenance__icon-svg" width="156" height="156" viewBox="0 0 156 156" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#megaphone-clip)">
+            <path
+              d="M38.6318 107.909L35.8711 97.6059L47.269 94.5519C47.8025 94.4089 48.3508 94.7255 48.4938 95.259L50.7369 103.63C50.8798 104.164 50.5632 104.712 50.0298 104.855L38.6318 107.909Z"
+              fill="url(#megaphone-paint0)" />
+            <rect x="25.2725" y="82.7773" width="12.8" height="49.0667" rx="6.4" transform="rotate(-15 25.2725 82.7773)"
+              fill="url(#megaphone-paint1)" />
+            <path
+              d="M84.3311 55.9096C87.0636 55.1774 89.9752 55.5608 92.4251 56.9752C94.8751 58.3897 96.6628 60.7195 97.395 63.4521C98.1272 66.1847 97.7439 69.0962 96.3294 71.5462C94.9149 73.9961 92.5851 75.7839 89.8525 76.5161L87.0918 66.2128L84.3311 55.9096Z"
+              fill="url(#megaphone-paint2)" />
+            <path
+              d="M19.0473 100.87C10.8196 102.532 2.71734 97.511 0.544811 89.403C-1.62771 81.295 2.87842 72.8953 10.8351 70.2212L20.2756 67.0485C26.1125 65.0868 31.5628 62.1229 36.382 58.2898L70.9712 30.7777L90.8485 104.961L47.1373 98.4292C41.0472 97.5192 34.8451 97.6776 28.8094 98.8972L19.0473 100.87Z"
+              fill="url(#megaphone-paint3)" />
+            <path
+              d="M29.553 98.7533C29.3049 98.7997 29.0562 98.8466 28.8085 98.8967L19.0469 100.87C18.3435 101.012 17.6407 101.1 16.9428 101.146L8.87354 71.0318C9.50121 70.7233 10.1547 70.4501 10.8348 70.2215L20.275 67.0493C20.5146 66.9688 20.7528 66.8831 20.991 66.7992L29.553 98.7533Z"
+              fill="url(#megaphone-paint4)" />
+            <rect x="91.9526" y="109.082" width="85.3333" height="6.4" rx="3.2" transform="rotate(-105 91.9526 109.082)"
+              fill="url(#megaphone-paint5)" />
+            <path class="maintenance__pulse maintenance__pulse-outer"
+              d="M145.955 79.9385C145.181 81.5994 143.207 82.318 141.546 81.5435C139.885 80.769 139.166 78.7947 139.941 77.1338C144.032 68.3603 144.47 58.321 141.159 49.2243C137.848 40.1276 131.059 32.7186 122.286 28.6275C120.625 27.853 119.906 25.8787 120.681 24.2178C121.455 22.5569 123.43 21.8383 125.09 22.6128C135.459 27.4478 143.483 36.2034 147.396 46.9541C151.309 57.7047 150.79 69.5698 145.955 79.9385Z"
+              fill="#D7D8DB" />
+            <path class="maintenance__pulse maintenance__pulse-middle"
+              d="M127.586 79.4043C126.811 81.0652 124.837 81.7838 123.176 81.0093C121.515 80.2348 120.797 78.2605 121.571 76.5996C124.77 69.7403 125.113 61.8911 122.524 54.7791C119.936 47.6672 114.628 41.875 107.768 38.6765C106.107 37.902 105.389 35.9277 106.163 34.2668C106.938 32.6059 108.912 31.8873 110.573 32.6618C119.027 36.6042 125.569 43.7437 128.76 52.5096C131.95 61.2755 131.528 70.9498 127.586 79.4043Z"
+              fill="#D7D8DB" />
+            <path class="maintenance__pulse maintenance__pulse-inner"
+              d="M110.921 77.1469C110.147 78.8078 108.172 79.5264 106.511 78.7519C104.85 77.9774 104.132 76.0031 104.906 74.3422C106.915 70.0352 107.13 65.1068 105.504 60.6412C103.879 56.1755 100.546 52.5384 96.2394 50.53C94.5785 49.7555 93.8599 47.7813 94.6344 46.1203C95.4089 44.4594 97.3832 43.7409 99.0441 44.5154C104.946 47.2676 109.513 52.252 111.74 58.3716C113.967 64.4912 113.673 71.2447 110.921 77.1469Z"
+              fill="#D7D8DB" />
+          </g>
+          <defs>
+            <linearGradient id="megaphone-paint0" x1="54.7669" y1="98.0643" x2="42.4031" y2="101.377"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#55585E" />
+              <stop offset="1" stop-color="#878B92" />
+            </linearGradient>
+            <linearGradient id="megaphone-paint1" x1="31.6725" y1="131.844" x2="31.6725" y2="82.7773"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#94989E" />
+              <stop offset="1" stop-color="#E4E5E7" />
+            </linearGradient>
+            <linearGradient id="megaphone-paint2" x1="76.7886" y1="68.9736" x2="97.395" y2="63.4521"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E4E5E7" />
+              <stop offset="1" stop-color="#94989E" />
+            </linearGradient>
+            <linearGradient id="megaphone-paint3" x1="0.54494" y1="89.403" x2="96.7082" y2="63.6361"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FAA69E" />
+              <stop offset="1" stop-color="#F43625" />
+            </linearGradient>
+            <linearGradient id="megaphone-paint4" x1="13.1846" y1="87.1205" x2="31.7303" y2="82.1511"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#CACBCE" />
+              <stop offset="1" stop-color="#F2F2F3" />
+            </linearGradient>
+            <linearGradient id="megaphone-paint5" x1="134.619" y1="109.082" x2="134.619" y2="116.193"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FAA69E" />
+              <stop offset="1" stop-color="#F43625" />
+            </linearGradient>
+            <clipPath id="megaphone-clip">
+              <rect width="156" height="156" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="maintenance__text">
+        <h1 class="maintenance__title" id="maintenance-title">서비스 점검 중입니다.</h1>
+        <p class="maintenance__description" id="maintenance-description">
+          안정적인 서비스 제공을 위해 현재 시스템 점검을 진행하고 있습니다. 점검 완료 후 다시 이용해 주세요.
+        </p>
+        <p class="maintenance__period" id="maintenance-period">5월 7일 오전 2시 - 3시</p>
+        <p class="maintenance__notice" id="maintenance-notice">
+          <svg class="maintenance__notice-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M7.99998 1.33337C11.6819 1.33337 14.6666 4.31814 14.6666 8.00004C14.6666 11.6819 11.6819 14.6667 7.99998 14.6667C4.31808 14.6667 1.33331 11.6819 1.33331 8.00004C1.33331 4.31814 4.31808 1.33337 7.99998 1.33337ZM7.99998 10C7.63179 10 7.33331 10.2985 7.33331 10.6667C7.33331 11.0349 7.63179 11.3334 7.99998 11.3334C8.36817 11.3334 8.66665 11.0349 8.66665 10.6667C8.66665 10.2985 8.36817 10 7.99998 10ZM7.99998 4.80017C7.70543 4.80017 7.46678 5.03882 7.46678 5.33337V8.66671C7.46678 8.96126 7.70543 9.19991 7.99998 9.19991C8.29453 9.19991 8.53318 8.96126 8.53318 8.66671V5.33337C8.53318 5.03882 8.29453 4.80017 7.99998 4.80017Z"
+              fill="#DA1D0B" />
+          </svg>
+          <span id="maintenance-notice-text">점검 상황에 따라 종료 시간이 변경될 수 있습니다.</span>
+        </p>
+      </div>
+
+      <a class="maintenance__refresh" id="maintenance-refresh" href="" role="button">새로고침</a>
+    </section>
+  </main>
+</body>
+
+</html>
