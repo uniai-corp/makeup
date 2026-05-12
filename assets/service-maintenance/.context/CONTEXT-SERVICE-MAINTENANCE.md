@@ -258,6 +258,37 @@ edge-case/
 
 - 콘텐츠 변경은 먼저 `locale.json`을 확인한다.
 - 스타일 변경은 `css/maintenance.css`를 확인한다.
+
+## 2026-05-12 Remote Favicon Reference Correction (append-only)
+
+### 배경
+
+- `service-maintenance/index.html`은 외부 환경에서 단독 또는 제한된 정적 스코프로 배포될 수 있다.
+- 이 경우 `../favicon/*`처럼 `service-maintenance` 상위 디렉터리에 의존하는 상대 경로는 배포 스코프 밖으로 나가 favicon을 찾지 못할 수 있다.
+- 사용자가 제공한 기준 경로는 `https://raw.githubusercontent.com/uniai-corp/makeup/refs/heads/main/assets`이며, favicon은 해당 원격 assets 하위의 `favicon/`을 기준으로 참조해야 한다.
+
+### 변경
+
+- `index.html`의 favicon 관련 `<link>`와 `msapplication-TileImage`를 모두 원격 절대 URL로 수정했다.
+- 기준 URL은 `https://raw.githubusercontent.com/uniai-corp/makeup/refs/heads/main/assets/favicon/`이다.
+- `README.md`의 배포 설명과 권장 CSP 예시에 `https://raw.githubusercontent.com` 이미지 출처를 반영했다.
+
+### 이유
+
+- favicon이 `service-maintenance` 배포 스코프 밖의 로컬 상대 경로에 의존하지 않게 하기 위해서다.
+- 점검 페이지 본문 리소스인 `locale.json`, `css/maintenance.css`, `js/locale.js`는 기존처럼 같은 디렉터리 스코프 안에서 유지하되, favicon만 사용자가 지정한 공유 원격 assets를 SOT로 사용한다.
+
+### 영향
+
+- favicon 표시는 raw GitHub 접근 가능성에 의존한다.
+- raw GitHub가 차단되는 환경에서는 favicon만 표시되지 않을 수 있지만, 점검 페이지 본문 렌더링에는 영향을 주지 않는다.
+- 엄격한 CSP 환경에서는 `img-src`에 `https://raw.githubusercontent.com` 허용이 필요하다.
+
+### 검증 / 미해결
+
+- `index.html` head 영역의 favicon URL 정적 확인 완료.
+- `README.md` CSP 예시 정적 확인 완료.
+- 실제 브라우저 favicon 로드 검증은 미수행이다.
 - locale 주입 동작 변경은 `js/locale.js`를 확인한다.
 - `/en/index.html`, `/jp/index.html`은 redirect shell이므로 실제 화면 markup을 추가하지 않는다.
 - URL 유지형 locale route가 필요하면 정적 인프라 rewrite 지원 여부를 먼저 확인한다.
