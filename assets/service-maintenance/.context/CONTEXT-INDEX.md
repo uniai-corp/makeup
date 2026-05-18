@@ -4,4 +4,4 @@
 
 ## Active Context
 
-- `CONTEXT-SERVICE-MAINTENANCE.md`: `index.html`, `locale.json`, 공통 CSS/JS, megaphone pulse animation, 콘텐츠/i18n 검토 및 locale route 운영 기록
+- `CONTEXT-SERVICE-MAINTENANCE.md`: `index.html`, `standalone.html`, `locale.json`, 공통 CSS/JS, megaphone pulse animation, 콘텐츠/i18n 검토 및 locale route 운영 기록
