@@ -73,10 +73,9 @@
       month: "long",
       day: "numeric",
       hour: "numeric",
-      minute: "2-digit",
-      timeZoneName: "short"
+      minute: "2-digit"
     };
-    var timeZone = content.timeZone || "UTC";
+    var timeZone = content.timeZone || "client";
 
     if (timeZone !== "client") {
       options.timeZone = timeZone;
