@@ -1,7 +1,7 @@
-# CONTEXT-EDGE-CASE — Static Assets Edge Case Page
+# CONTEXT-SERVICE-MAINTENANCE — Static Assets Service Maintenance Page
 
-> 이 문서는 `static-assets/assets/edge-case/**`의 정적 점검 안내 페이지 운영 맥락을 보존한다.
-> append-only 히스토리 자산이며, 기존 결정을 삭제하거나 요약 치환하지 않는다.
+> 이 문서는 `static-assets/assets/service-maintenance/**`의 정적 점검 안내 페이지 운영 맥락을 보존한다.
+> 외부 개발자에게 노출될 수 있는 public-facing operational log로 유지한다.
 
 ## 2026-05-12 Static Maintenance Page Handoff
 
@@ -76,8 +76,8 @@
 
 - `time.json` JSON parse 확인 완료.
 - `README.md`와 `index.html`에서 `time.json`, `data-pulse-motion` 참조 확인 완료.
-- 로컬 HTTP curl 검증은 sandbox networking/서버 연결 문제로 완료하지 못했다.
-- visual screenshot 자동 검증은 이전 in-app browser screenshot timeout 이력 때문에 수행하지 않았다.
+- HTTP 기반 로컬 응답 검증은 환경 제약으로 완료하지 못했다.
+- visual screenshot 자동 검증은 미수행이다.
 - 미해결: 실제 다국어 스키마 도입 여부와 locale 선택 정책.
 
 ### current-priority contract
@@ -158,7 +158,7 @@ edge-case/
   - `time.json`
   - `en/time.json`
   - `jp/time.json`
-- visual/browser screenshot 검증은 Browser tool 미노출 및 Playwright CLI wrapper 대기 문제로 미수행이다.
+- visual/browser screenshot 검증은 미수행이다.
 - 미해결: 실제 인프라 라우팅에서 `/en/`, `/jp/` 경로를 어떤 조건으로 선택할지.
 
 ### current-priority contract
@@ -265,7 +265,7 @@ edge-case/
 
 - `service-maintenance/index.html`은 외부 환경에서 단독 또는 제한된 정적 스코프로 배포될 수 있다.
 - 이 경우 `../favicon/*`처럼 `service-maintenance` 상위 디렉터리에 의존하는 상대 경로는 배포 스코프 밖으로 나가 favicon을 찾지 못할 수 있다.
-- 사용자가 제공한 기준 경로는 `https://raw.githubusercontent.com/uniai-corp/makeup/refs/heads/main/assets`이며, favicon은 해당 원격 assets 하위의 `favicon/`을 기준으로 참조해야 한다.
+- 공유 assets 기준 경로는 `https://raw.githubusercontent.com/uniai-corp/makeup/refs/heads/main/assets`이며, favicon은 해당 원격 assets 하위의 `favicon/`을 기준으로 참조한다.
 
 ### 변경
 
@@ -276,7 +276,7 @@ edge-case/
 ### 이유
 
 - favicon이 `service-maintenance` 배포 스코프 밖의 로컬 상대 경로에 의존하지 않게 하기 위해서다.
-- 점검 페이지 본문 리소스인 `locale.json`, `css/maintenance.css`, `js/locale.js`는 기존처럼 같은 디렉터리 스코프 안에서 유지하되, favicon만 사용자가 지정한 공유 원격 assets를 SOT로 사용한다.
+- 점검 페이지 본문 리소스인 `locale.json`, `css/maintenance.css`, `js/locale.js`는 같은 디렉터리 스코프 안에서 유지하되, favicon은 공유 원격 assets를 기준으로 사용한다.
 
 ### 영향
 
@@ -299,20 +299,20 @@ edge-case/
 
 - 기존 폴더명 `edge-case`는 기술적 예외 상황을 뜻해 실제 목적이 잘 드러나지 않았다.
 - 현재 산출물의 목적은 서비스 점검 또는 일시적 이용 제한 상황에서 표시하는 정적 안내 페이지다.
-- README는 회사 외부에 노출될 수 있어 내부 작업 히스토리보다 배포/수정 방법 중심의 공개 가능한 문서 톤이 필요했다.
+- README는 외부 개발자에게 노출될 수 있어 배포/수정 방법 중심의 공개 가능한 문서 톤이 필요했다.
 
 ### 변경
 
 - 디렉터리 경로를 `assets/edge-case`에서 `assets/service-maintenance`로 변경했다.
 - context 파일명을 `CONTEXT-EDGE-CASE.md`에서 `CONTEXT-SERVICE-MAINTENANCE.md`로 변경하고 `CONTEXT-INDEX.md`의 active context 항목을 갱신했다.
 - `README.md`를 public-facing 운영 안내 문서로 재작성했다.
-  - 내부 판단 과정과 장황한 히스토리 설명을 제거했다.
+  - 장황한 히스토리 설명을 제거했다.
   - 배포 구조, locale route, 콘텐츠 수정, 스타일/애니메이션 수정, fallback 정책을 중심으로 정리했다.
 
 ### 이유
 
 - `service-maintenance`는 서비스 점검 안내라는 목적을 경로에서 바로 드러낸다.
-- public-facing README는 외부 이해관계자가 보더라도 민감하거나 과도하게 내부적인 실행 기록 없이 산출물 사용법을 이해할 수 있어야 한다.
+- public-facing README는 외부 이해관계자가 보더라도 과도한 실행 기록 없이 산출물 사용법을 이해할 수 있어야 한다.
 - 기존 context 히스토리는 append-only로 보존하고, 현재 우선순위는 새 섹션에서 명시한다.
 
 ### 영향
@@ -337,7 +337,7 @@ edge-case/
 - 최신 우선순위는 이 섹션이다.
 - 현재 목적지향 경로명은 `service-maintenance`다.
 - public-facing README는 사용법과 배포/수정 계약 중심으로 유지한다.
-- 내부 히스토리와 의사결정 로그는 `.context/CONTEXT-SERVICE-MAINTENANCE.md`에 append-only로 보존한다.
+- 상세 운영 변경 이력은 `.context/CONTEXT-SERVICE-MAINTENANCE.md`에 보존한다.
 
 ### next-session checklist
 
@@ -386,8 +386,8 @@ edge-case/
 - 검증 대상:
   - `locale.json` JSON parse
   - `js/locale.js` syntax check
-  - mock DOM에서 `?locale=en` 기간 포맷
-  - mock DOM에서 `/jp/` 기간 포맷
+  - DOM-level `?locale=en` 기간 포맷
+  - DOM-level `/jp/` 기간 포맷
 - 미해결: 영어 페이지의 기본 timezone을 `UTC`가 아닌 특정 지역으로 바꿀 운영 정책이 있는지.
 
 ### current-priority contract
@@ -407,9 +407,8 @@ edge-case/
 
 ### 배경
 
-- 점검 기간 SOT는 UTC지만, 영어 페이지는 글로벌 사용자 대상이다.
-- HQ, 개발, 유지보수, CS는 한국 기준으로 운영되지만, 영어 사용자는 접속 국가가 불특정이다.
-- `en`을 `UTC` 고정 표시로 두면 사용자 현지 시간 이해도는 낮아질 수 있다.
+- 점검 기간 SOT는 UTC지만, 영어 페이지는 글로벌 사용자를 대상으로 한다.
+- 영어 사용자는 접속 지역이 불특정이므로 고정 UTC 표시는 현지 시간 이해도를 낮출 수 있다.
 
 ### 변경
 
@@ -421,7 +420,7 @@ edge-case/
 ### 이유
 
 - UTC는 저장/SOT 기준으로 유지하되, 글로벌 영어 사용자에게는 현지 시간 표시가 더 이해하기 쉽다.
-- timezone 약어는 `timeZoneName: "short"`로 계속 표시해 CS 문의 시 기준 시간대를 확인할 수 있게 한다.
+- 당시에는 timezone 약어 표시를 유지했지만, 최신 표시 정책은 2026-05-18 `Maintenance Time Display Policy` 섹션을 따른다.
 
 ### 영향
 
@@ -434,7 +433,7 @@ edge-case/
 - 검증 대상:
   - `locale.json` JSON parse
   - `js/locale.js` syntax check
-  - mock DOM에서 `?locale=en`이 환경 timezone으로 포맷되는지 확인
+  - DOM-level `?locale=en` 환경 timezone 포맷 확인
 - 미해결: 실제 브라우저/OS timezone별 표시 QA.
 
 ### current-priority contract
@@ -445,7 +444,7 @@ edge-case/
 
 ### next-session checklist
 
-- 영어 표시 시간이 사용자 환경별로 달라지는 것은 의도된 동작이다.
+- 영어 표시 시간은 접속 환경별로 달라질 수 있다.
 - 영어 timezone 고정 요구가 생기면 `locales.en.timeZone`만 수정한다.
 
 ## 2026-05-12 README Infrastructure Requirements Update (append-only)
@@ -541,3 +540,162 @@ edge-case/
 - 스타일 수정은 `css/maintenance.css`를 먼저 본다.
 - locale 동작 수정은 `js/locale.js`를 먼저 본다.
 - 배포 문제는 README의 인프라 요구사항을 먼저 확인한다.
+
+## 2026-05-18 Standalone HTML Variant (public-facing)
+
+### 배경
+
+- 일부 정적 장애/점검 페이지 환경은 단일 HTML 파일만 등록할 수 있다.
+- 기존 `index.html + locale.json + css/ + js/` 구조는 정적 디렉터리 전체 배포에는 적합하지만, 단일 파일 등록 환경에는 별도 산출물이 필요하다.
+- 단일 파일 산출물은 기존 구조를 대체하지 않고 파생 파일로 유지한다.
+
+### 변경
+
+- `assets/service-maintenance/standalone.html`을 추가했다.
+  - `css/maintenance.css` 내용을 `<style>`로 포함했다.
+  - `locale.json` 내용을 `window.__SERVICE_MAINTENANCE_LOCALE_DATA__` object로 포함했다.
+  - locale 적용 JS를 `<script>`로 포함했다.
+  - browser language detection은 `navigator.languages`와 `navigator.language`를 사용한다.
+  - `ja`/`jp`는 `jp` 콘텐츠에 매핑하고, unsupported locale은 `ko`로 fallback한다.
+- `assets/favicon/*`의 favicon 파일을 base64 data URI로 변환해 `standalone.html` head에 포함했다.
+- `README.md`와 `.context/CONTEXT-INDEX.md`에 `standalone.html` 사용 조건을 반영했다.
+
+### 이유
+
+- `locale.json`은 계속 원본 콘텐츠 SOT로 유지한다.
+- `standalone.html`은 단일 HTML 배포용 파생 산출물이며, 외부 stylesheet/script/JSON/favicon 요청 없이 렌더링해야 한다.
+- 기존 분리형 `index.html` 구조와 locale route shell은 정적 디렉터리 배포용으로 유지한다.
+
+### 영향
+
+- 정적 디렉터리 전체를 배포할 수 있는 환경에서는 기존 `index.html` 구조를 사용한다.
+- 단일 HTML만 등록할 수 있는 환경에서는 `standalone.html`을 사용한다.
+- `standalone.html`은 path/query locale route를 사용하지 않고 브라우저 언어를 기준으로 콘텐츠를 선택한다.
+- `locale.json`, `css/maintenance.css`, `js/locale.js`, favicon 원본이 바뀌면 standalone 산출물도 함께 갱신해야 한다.
+
+### 검증 / 미해결
+
+- 확인 완료:
+  - `locale.json` JSON parse
+  - `js/locale.js` syntax check
+  - `standalone.html` 내장 locale data parse
+  - `standalone.html` 내장 locale data와 `locale.json` 동기화 확인
+  - 외부 stylesheet/script/fetch/http href 참조 미존재 확인
+  - favicon data URI 포함 확인
+  - browser rendering validation에서 `ko`, `en`, `jp`, fallback locale 동작 확인
+- 미해결:
+  - 단일 HTML 등록 환경의 CSP가 inline `<style>`/`<script>`와 data URI favicon을 허용하는지 배포 전 확인 필요
+
+### current-priority contract
+
+- 최신 우선순위는 이 섹션이다.
+- 기존 구조는 유지한다.
+- `locale.json`은 원본 콘텐츠 SOT다.
+- `standalone.html`은 단일 HTML 배포용 파생 산출물이다.
+- standalone locale 선택은 브라우저 언어 기반이며, unsupported locale은 `ko`로 fallback한다.
+
+### next-session checklist
+
+- 정적 디렉터리 배포 이슈면 `index.html`, `locale.json`, `css/maintenance.css`, `js/locale.js`를 먼저 본다.
+- 단일 HTML 배포 이슈면 `standalone.html`을 먼저 본다.
+- 콘텐츠/시간/favicon 변경 후 standalone도 배포해야 하면 `standalone.html` 내장 데이터와 data URI를 최신 원본과 동기화한다.
+- inline CSP가 금지된 환경이면 standalone 사용 전에 CSP 예외 또는 별도 등록 방식을 확인한다.
+
+## 2026-05-18 Maintenance Time Display Policy (public-facing)
+
+### 배경
+
+- 점검 기간은 언어별 문자열이 아니라 `locale.json`의 UTC `maintenanceWindow.start/end`가 SOT다.
+- 화면 표시 시간은 UTC 값을 locale별 `timeZone` 정책에 따라 변환한다.
+- timezone suffix는 최종 사용자에게 추가 계산이 필요한 값처럼 보일 수 있어 표시하지 않는다.
+
+### 변경
+
+- `assets/service-maintenance/js/locale.js`에서 `Intl.DateTimeFormat`의 `timeZoneName` 옵션을 사용하지 않도록 했다.
+- `assets/service-maintenance/standalone.html`의 내장 포맷 로직도 같은 정책으로 맞췄다.
+- `standalone.html` 내장 locale data를 현재 `locale.json`과 동기화했다.
+  - `maintenanceWindow.start`: `2026-05-06T02:00:00Z`
+  - `maintenanceWindow.end`: `2026-05-06T06:00:00Z`
+  - `ko.timeZone`: `Asia/Seoul`
+  - `en.timeZone`: `client`
+  - `jp.timeZone`: `Asia/Tokyo`
+- `README.md`에 timezone suffix를 표시하지 않는다는 설명을 추가했다.
+
+### 이유
+
+- UTC SOT는 운영 데이터의 기준으로 유지한다.
+- 화면에는 변환된 최종 시간 범위만 표시한다.
+- `standalone.html`은 외부 `locale.json`을 읽지 않으므로, 내장 데이터가 원본 SOT와 어긋나지 않아야 한다.
+
+### 영향
+
+- 점검 기간 화면 문구에서 `GMT+9`, `PDT`, `JST`, `KST` 같은 suffix는 표시하지 않는다.
+- 시간 계산은 `maintenanceWindow` UTC 값과 locale별 `timeZone` 설정을 따른다.
+- 기존 정적 구조와 standalone 구조 모두 같은 표시 정책을 사용한다.
+
+### 검증 / 미해결
+
+- 확인 완료:
+  - `js/locale.js` syntax check
+  - `standalone.html` 내장 locale data와 현재 `locale.json` 일치 확인
+  - `timeZoneName` 옵션 미사용 확인
+  - browser rendering validation에서 `index.html`과 `standalone.html` 모두 timezone suffix 없이 기간 표시 확인
+- 미해결:
+  - 없음
+
+### current-priority contract
+
+- 최신 우선순위는 이 섹션이다.
+- 화면의 점검 기간은 timezone suffix 없이 표시한다.
+- 시간 계산은 `locale.json`의 UTC `maintenanceWindow.start/end`와 locale별 `timeZone` 값을 따른다.
+- `standalone.html` 내장 locale data는 `locale.json`과 동기화되어야 한다.
+
+### next-session checklist
+
+- 점검 기간 표시 이슈가 있으면 `locale.json`의 `maintenanceWindow`, `timeZone`, `js/locale.js` 포맷 옵션을 먼저 확인한다.
+- `locale.json`의 시간 또는 timezone 값을 바꾸면 `standalone.html` 내장 locale data도 함께 갱신한다.
+- 화면에는 변환된 시간 범위만 표시하고 timezone suffix는 표시하지 않는다.
+
+## 2026-05-18 Public Context Tone Alignment (public-facing)
+
+### 배경
+
+- 이 repository와 `.context` 문서는 외부 개발자에게 노출될 수 있다.
+- context 문서는 작업 실행 로그가 아니라 공개 가능한 운영 변경 이력으로 유지해야 한다.
+
+### 변경
+
+- 최근 context 섹션을 public-facing operational log 기준으로 정리했다.
+- 작업자 중심 표현과 로컬 도구명 중심 표현을 제거하거나 중립화했다.
+- 기술 계약, 파일 영향, 검증 결과, 다음 세션 체크포인트는 유지했다.
+
+### 이유
+
+- 외부 독자는 최신 동작 계약과 배포/검증 경계만 명확히 이해하면 된다.
+- 공개 문서에는 불필요한 작업 실행 맥락보다 재현 가능한 파일 계약과 운영 정책이 우선이다.
+
+### 영향
+
+- context 문서의 최신 우선순위는 공개 가능한 운영 계약 중심으로 읽힌다.
+- 과거 섹션은 히스토리로 남지만, 새 섹션은 public-facing tone을 기본값으로 둔다.
+
+### 검증 / 미해결
+
+- 확인 완료:
+  - 공개 부적합 표현 스캔
+  - 최신 섹션의 public-facing tone 정리
+  - `CONTEXT-INDEX.md` active context와 `README.md` standalone 설명 확인
+- 미해결:
+  - 과거 2026-05-12 히스토리의 추가 문장 정리는 필요 시 별도 정리한다.
+
+### current-priority contract
+
+- 최신 우선순위는 이 섹션이다.
+- `CONTEXT-SERVICE-MAINTENANCE.md`는 외부 노출 가능한 운영 변경 이력으로 유지한다.
+- 새 context 기록은 변경 배경, 파일별 영향, 검증 결과, 현재 계약, 다음 확인 지점 중심으로 작성한다.
+
+### next-session checklist
+
+- context를 갱신할 때 작업 실행 디테일보다 공개 가능한 운영 계약을 우선한다.
+- 개인 중심 경위보다 현재 산출물이 어떤 계약을 가지는지 기록한다.
+- 로컬 검증 도구명은 필요할 때만 일반화해 기록한다.
